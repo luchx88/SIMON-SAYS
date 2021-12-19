@@ -44,6 +44,10 @@ module.exports = {
           'css-loader',
           'sass-loader'
         ]
+      },
+      {
+        test: /\.mp3$/,
+        type: "asset/resource",
       }
     ]
   },

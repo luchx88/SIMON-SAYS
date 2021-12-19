@@ -7,8 +7,17 @@ import ScoreMarker from "./ScoreMarker";
 import FinalScoreModal from "./FinalScoreModal";
 
 import timeout from "../utils/timeout"
+import redFile from "../assets/mp3-notes/f5.mp3"
+import greenFile from "../assets/mp3-notes/d5.mp3"
+import blueFile from "../assets/mp3-notes/c5.mp3"
+import yellowFile from "../assets/mp3-notes/a-5.mp3"
 
 const App = () => {
+  const redSound = new Audio(redFile);
+  const greenSound = new Audio(greenFile);
+  const blueSound = new Audio(blueFile);
+  const yellowSound = new Audio(yellowFile);
+
   const colorList = ['red', 'green', 'blue', 'yellow'];
   const [showModal, setShowModal] = useState(false);
 
@@ -57,6 +66,7 @@ const App = () => {
     await timeout(1000);
     for (let i = 0; i < game.colorSequence.length; i++) {
       setFlashColor(game.colorSequence[i]);
+      playSound(game.colorSequence[i]);
       await timeout(500);
       setFlashColor('');
       await timeout(500);
@@ -79,6 +89,7 @@ const App = () => {
       const firstColor = userColorsCopy.shift();
 
       setFlashColor(color);
+      playSound(color);
       await timeout(250);
 
 
@@ -103,6 +114,23 @@ const App = () => {
       }
       setFlashColor('');
       await timeout(100)
+    }
+  }
+
+  const playSound = (color) => {
+    switch(color) {
+      case 'red':
+        redSound.play();
+        break;
+      case 'green':
+        greenSound.play();
+        break;
+      case 'blue':
+        blueSound.play();
+        break;
+      case 'yellow':
+        yellowSound.play();
+        break;
     }
   }
 

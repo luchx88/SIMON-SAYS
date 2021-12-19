@@ -1,0 +1,30 @@
+@import "global";
+
+.ScoreMarker {
+  position: absolute;
+  top: calc(50% - ($centerLength / 2));
+  right: calc(50% - ($centerLength / 2));
+  width: $centerLength;
+  height: $centerLength;
+  background-color: $bg;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ScoreMarker h1 {
+  font-size: 65px;
+}
+
+@media screen and (max-width: 560px) {
+  .ScoreMarker {
+    width: 98px;
+    height: 98px;
+    top: calc(50% - 49px);
+    right: calc(50% - 49px);
+  }
+  .ScoreMarker h1 {
+    font-size: 45px;
+  }
+}

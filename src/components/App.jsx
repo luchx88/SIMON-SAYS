@@ -5,6 +5,7 @@ import ColorButton from "./ColorButton";
 import StartButton from "./StartButton";
 import ScoreMarker from "./ScoreMarker";
 import FinalScoreModal from "./FinalScoreModal";
+import MaxScore from "./MaxScore";
 
 import timeout from "../utils/timeout"
 import redFile from "../assets/mp3-notes/f5.mp3"
@@ -32,9 +33,12 @@ const App = () => {
   const [isOn, setIsOn] = useState(false);
   const [game, setGame] = useState(initGame);
   const [flashColor, setFlashColor] = useState('');
+  const [maxScore, setMaxScore] = useState([]);
 
   useEffect(() => {
     if(isOn) {
+      setGame({...initGame, illuminating: true})
+    } else if (isOn && !game.score) {
       setGame({...initGame, illuminating: true})
     } else {
       setGame({
@@ -109,6 +113,10 @@ const App = () => {
           })
         }
       } else {
+        const score = game.score;
+        const maxScoreCopy = [...maxScore];
+        maxScoreCopy.push(game.score);
+        setMaxScore(maxScoreCopy);
         setIsOn(false);
         setShowModal(true);
       }
@@ -155,6 +163,7 @@ const App = () => {
           />
         )}
       </section>
+      {!(maxScore.length === 0) && <MaxScore maxScore={maxScore} />}
     </main>
   );
 }

@@ -10,7 +10,7 @@ const FinalScoreModal = ({ score, setShowModal }) => {
   return (
     <div className="FinalScoreModal">
       <div className="FinalScoreModal__container">
-        <h2>You've lost, try again!</h2>
+        <h2>Whoops, try again!</h2>
         <h2>Your final score: {score}</h2>
         <button
           onClick={handleClick}

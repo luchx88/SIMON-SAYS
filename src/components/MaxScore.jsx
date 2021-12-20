@@ -1,11 +1,13 @@
 import React from "react";
 import "../styles/MaxScore.scss"
 
-const MaxScore = ({ maxScore, score }) => {
+const MaxScore = ({ maxScore }) => {
+  const maxScoreValue = Math.max(...maxScore)
   return (
     <div className="MaxScore">
-      <h2>Max Score: {maxScore}</h2>
-      <h3>Actual Score: {score}</h3>
+      <h2>Max Score: {maxScoreValue}</h2>
     </div>
   );
 }
+
+export default MaxScore;
